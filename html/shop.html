@@ -6,11 +6,6 @@
     <title>Souvenir Shop | Museum of Cultural Memory</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        body { background:#efefef; color:#1a2a3a; }
-        header { text-align:center; background:#45525a; color:#fff; padding:28px 0 18px; }
-        header h1{ margin:0; font-size:32px; }
-        header nav button{ background:#6f8a98; color:#fff; border-radius:6px; padding:8px 14px; margin:8px 6px; border:none; cursor:pointer; }
-        .shop-intro{ text-align:center; margin:18px 0; font-style:italic; color:#444; }
         .shop-container{ max-width:1100px; margin:30px auto; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding:0 12px; }
         .souvenir-item{ background:#fff; border:3px solid #2b2b2b22; padding:12px; border-radius:6px; box-shadow:0 2px 0 rgba(0,0,0,0.06); display:flex; flex-direction:column; }
         .souvenir-item img{ width:100%; height:220px; object-fit:cover; border:6px solid #f3f3f3; cursor:pointer; }
@@ -35,7 +30,7 @@
 <body>
 
     <header>
-        <h1>Souvenir Shop</h1>
+        <h1>Museum of Cultural Memory</h1>
         <nav>
             <button onclick="location.href='../index.html'">Home</button>
             <button onclick="location.href='staff.html'">Staff</button>
@@ -45,7 +40,10 @@
     </header>
 
     <main>
-        <p class="shop-intro">The content in this shop was entirely created by AI under human direction. It was then curated, reviewed and edited by a human before being published.</p>
+        <section class="hero-box">
+            <h2>Souvenir Shop</h2>
+            <p>The content in this shop was entirely created by AI under human direction. It was then curated, reviewed and edited by a human before being published.</p>
+        </section>
 
         <section class="shop-container">
 
