@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Souvenir Shop | Museum of Cultural Memory</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body { background:#efefef; color:#1a2a3a; }
+        header { text-align:center; background:#45525a; color:#fff; padding:28px 0 18px; }
+        header h1{ margin:0; font-size:32px; }
+        header nav button{ background:#6f8a98; color:#fff; border-radius:6px; padding:8px 14px; margin:8px 6px; border:none; cursor:pointer; }
+        .shop-intro{ text-align:center; margin:18px 0; font-style:italic; color:#444; }
+        .shop-container{ max-width:1100px; margin:30px auto; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding:0 12px; }
+        .souvenir-item{ background:#fff; border:3px solid #2b2b2b22; padding:12px; border-radius:6px; box-shadow:0 2px 0 rgba(0,0,0,0.06); display:flex; flex-direction:column; }
+        .souvenir-item img{ width:100%; height:220px; object-fit:cover; border:6px solid #f3f3f3; cursor:pointer; }
+        .souvenir-title{ font-weight:700; margin:10px 0 6px; }
+        .souvenir-desc{ font-size:13px; color:#333; flex:1; }
+        .souvenir-price{ font-weight:700; margin:8px 0; }
+        .add-btn{ background:#1e2e4a; color:#fff; padding:10px; border-radius:4px; border:none; cursor:pointer; }
+        .add-btn:focus{ outline:3px solid #8196ad; }
+        .tooltip{ position:relative; }
+        .tooltip:hover::after{ content:attr(data-tooltip); position:absolute; left:0; top:-40px; background:#222; color:#fff; padding:6px 8px; border-radius:4px; font-size:12px; white-space:nowrap; box-shadow:0 2px 6px rgba(0,0,0,0.3); }
+
+        /* Modal */
+        .modal-overlay{ position:fixed; left:0; top:0; right:0; bottom:0; background:rgba(0,0,0,0.6); display:none; align-items:center; justify-content:center; z-index:9999; }
+        .modal-frame{ background:#fff; padding:12px; border-radius:4px; max-width:900px; max-height:90vh; overflow:auto; box-shadow:0 8px 30px rgba(0,0,0,0.6); }
+        .modal-frame img{ width:100%; height:auto; display:block; }
+        .modal-close{ position:absolute; right:18px; top:18px; background:#fff; border-radius:50%; padding:6px 10px; cursor:pointer; border:1px solid #ddd; }
+
+        @media (max-width: 980px){ .shop-container{ grid-template-columns:repeat(2,1fr); } }
+        @media (max-width: 520px){ .shop-container{ grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Souvenir Shop</h1>
+        <nav>
+            <button onclick="location.href='../index.html'">Home</button>
+            <button onclick="location.href='staff.html'">Staff</button>
+            <button onclick="location.href='collections.html'">Collections</button>
+            <button onclick="location.href='shop.html'">Shop</button>
+        </nav>
+    </header>
+
+    <main>
+        <p class="shop-intro">The content in this shop was entirely created by AI under human direction. It was then curated, reviewed and edited by a human before being published.</p>
+
+        <section class="shop-container">
+
+            <div class="souvenir-item tooltip" data-tooltip="Complete your Museum collection — a comprehensive guide" data-itemid="item001" data-title="Exhibition Curation Guide">
+                <img src="../images/collections/curation-guide.png" alt="Exhibition Curation Guide, pocket-sized booklet with ancient civilization design" data-large="../images/collections/curation-guide.png">
+                <div class="souvenir-title">Exhibition Curation Guide</div>
+                <div class="souvenir-desc">A beautifully designed pocket guide to understand Museum's collections. Includes detailed historical context, preservation techniques, and guided tours through the archaeological record. Perfect for exploring exhibitions in depth and learning about ancient civilizations. 64 pages, Japanese and English text.</div>
+                <div class="souvenir-price">Price: $15.95</div>
+                <button class="add-btn" onclick="addToCart(this)" aria-label="Add Exhibition Curation Guide to Cart">Add Exhibition Curation Guide to Cart</button>
+            </div>
+
+            <div class="souvenir-item tooltip" data-tooltip="Replica artifacts from Museum collections — educational and beautiful" data-itemid="item002" data-title="Ancient Replica Set">
+                <img src="../images/collections/replica-set.png" alt="Ancient Replica Set, miniature artifacts in display case" data-large="../images/collections/replica-set.png">
+                <div class="souvenir-title">Ancient Replica Set</div>
+                <div class="souvenir-desc">A curated set of three exquisite miniature replicas from Museum's collection. Crafted with precision to showcase ancient craftsmanship and material mastery. Each replica captures the intricate details and authentic textures of the original artifacts. Perfect for collectors, educators, and enthusiasts of ancient civilizations. Includes educational cards in Japanese and English.</div>
+                <div class="souvenir-price">Price: $38.95</div>
+                <button class="add-btn" onclick="addToCart(this)" aria-label="Add Ancient Replica Set to Cart">Add Ancient Replica Set to Cart</button>
+            </div>
+
+            <div class="souvenir-item tooltip" data-tooltip="Museum-inspired art for your space — modern and timeless" data-itemid="item003" data-title="Museum Official Poster & Art">
+                <img src="../images/collections/poster-art.png" alt="Museum Official Poster, modern geometric art with ancient motifs" data-large="../images/collections/poster-art.png">
+                <div class="souvenir-title">Museum Official Poster & Art</div>
+                <div class="souvenir-desc">Stunning modern art posters featuring Museum's signature colors and archaeological motifs. High-quality offset printing on premium matte paper in A2 size. Multiple designs inspired by ancient craftsmanship, geometric patterns, and cultural symbolism. Perfect for offices, galleries, homes, and educational institutions. Available in three distinct designs.</div>
+                <div class="souvenir-price">Price: $21.95</div>
+                <button class="add-btn" onclick="addToCart(this)" aria-label="Add Museum Official Poster to Cart">Add Museum Official Poster to Cart</button>
+            </div>
+
+            <div class="souvenir-item tooltip" data-tooltip="Learn ancient crafts — hands-on fun for all ages" data-itemid="item004" data-title="Ancient Craft Kit">
+                <img src="../images/collections/craft-kit.png" alt="Ancient Craft Kit with tools and materials" data-large="../images/collections/craft-kit.png">
+                <div class="souvenir-title">Ancient Craft Kit</div>
+                <div class="souvenir-desc">Experience ancient craftsmanship firsthand with this comprehensive hands-on kit. Includes air-dry clay, sculpting tools, authentic letter stamps, and detailed instruction cards. Perfect for children and adults to learn traditional techniques. Recommended for ages 8 and up. An engaging way to explore archaeological methods and ancient artistic expression through creative making.</div>
+                <div class="souvenir-price">Price: $29.95</div>
+                <button class="add-btn" onclick="addToCart(this)" aria-label="Add Ancient Craft Kit to Cart">Add Ancient Craft Kit to Cart</button>
+            </div>
+
+        </section>
+
+        <!-- Modal -->
+        <div id="itemModal" class="modal-overlay" role="dialog" aria-hidden="true">
+            <div class="modal-frame" role="document">
+                <button class="modal-close" aria-label="Close" onclick="closeModal()">✕</button>
+                <img id="modalImage" src="" alt="">
+                <div id="modalCaption" style="padding:10px 6px; color:#222; font-weight:700;"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Open modal when image clicked
+        document.querySelectorAll('.souvenir-item img').forEach(img => {
+            img.addEventListener('click', (e) => {
+                const large = e.currentTarget.getAttribute('data-large') || e.currentTarget.src;
+                const parent = e.currentTarget.closest('.souvenir-item');
+                const title = parent.getAttribute('data-title') || '';
+                const modal = document.getElementById('itemModal');
+                const modalImage = document.getElementById('modalImage');
+                const modalCaption = document.getElementById('modalCaption');
+                modalImage.src = large;
+                modalImage.alt = e.currentTarget.alt || title;
+                modalCaption.textContent = title;
+                modal.style.display = 'flex';
+                modal.setAttribute('aria-hidden','false');
+            });
+        });
+
+        function closeModal(){
+            const modal = document.getElementById('itemModal');
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden','true');
+        }
+
+        // Add to cart stub for Phase 2
+        function addToCart(button){
+            const parent = button.closest('.souvenir-item');
+            const id = parent.getAttribute('data-itemid') || 'unknown';
+            alert('Added ' + id + ' to cart (functionality to come)');
+        }
+
+        // close modal on overlay click
+        document.getElementById('itemModal').addEventListener('click', function(e){
+            if(e.target === this) closeModal();
+        });
+
+        // close with Esc
+        document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+    </script>
+
+</body>
+</html>
